@@ -9,17 +9,17 @@
 class Kith < Formula
   desc "Your coding-agent bots and the agents behind them, from one command"
   homepage "https://github.com/Ying-Kai-Liao/kith"
-  version "2.19.1"
-  license "Apache-2.0"
+  version "0.1.0"
+  license "FSL-1.1-MIT"
 
   on_macos do
     on_arm do
       url "https://github.com/Ying-Kai-Liao/kith/releases/download/v#{version}/kith-#{version}-darwin-arm64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "9c8b365390ea66459409a0d3a322849e33d6d54bf888c792f3daa1ce72ff7e4a"
     end
     on_intel do
       url "https://github.com/Ying-Kai-Liao/kith/releases/download/v#{version}/kith-#{version}-darwin-x86_64.tar.gz"
-      sha256 "0000000000000000000000000000000000000000000000000000000000000000"
+      sha256 "fc3fd17563ade0ad69131c9ba8cb178a2c75bb6adbed18f9f1b6a6215c72da71"
     end
   end
 
@@ -28,6 +28,7 @@ class Kith < Formula
 
   def install
     bin.install "bin/kith"
+    bin.install "bin/kith-tts" if File.exist?("bin/kith-tts")   # local voice helper, Apple silicon builds only
     bin.install_symlink bin/"kith" => "hq"   # the old name keeps working
     (share/"kith").install Dir["share/kith/*"], Dir["share/kith/.claude-plugin"]
   end

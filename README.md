@@ -6,8 +6,7 @@ Homebrew tap for [kith](https://github.com/Ying-Kai-Liao/kith).
 brew install Ying-Kai-Liao/kith/kith
 ```
 
-**The sha256 values in `Formula/kith.rb` are placeholders until kith's first release**, so `brew install` fails the
-checksum until then.
-
-Nothing pushes to this repo automatically. Each GitHub Release of kith attaches a filled `kith.rb`; to publish a
-release here, copy it to `Formula/kith.rb` by hand, commit and push.
+`Formula/kith.rb` is written by kith's release workflow: on each `v*` tag it fills the formula with that release's
+version and checksums, attaches it to the GitHub Release and commits it here (`scripts/update-tap.sh`, with the
+`HOMEBREW_TAP_TOKEN` secret in the kith repo). Without that secret the workflow warns and leaves this repo as it was;
+copy the release's `kith.rb` to `Formula/kith.rb` by hand then.
